@@ -16,7 +16,7 @@ function read_and_format () {
 }
 
 function read_stashes () {
-    git stash list --format='%gd %s'
+    git stash list --format='%gd %s' 2>/dev/null
 }
 
 function format_stash () {
