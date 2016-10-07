@@ -1,6 +1,17 @@
 #!/bin/zsh
 
 function main () {
+    local stashes=($(read_and_format))
+
+    if [ -z "${stashes}" ]
+    then
+        return
+    fi
+
+    printf "\Uf1d3 ${(j/, /)stashes}"
+}
+
+function read_and_format () {
     read_stashes | while read stash
     do
         format_stash "${stash}"
