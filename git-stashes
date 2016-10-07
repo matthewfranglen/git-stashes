@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+function main () {
+    read_stashes | while read stash
+    do
+        format_stash "${stash}"
+    done
+}
+
+function read_stashes () {
+    git stash list --format='%gd %s'
+}
+
+function format_stash () {
+    awk '{ if (/^stash@{[0-9]+} WIP/) { print $1 } else { split($0, array, ": "); print array[2] } }'
+}
+
+main
