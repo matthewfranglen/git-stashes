@@ -20,7 +20,16 @@ function read_stashes () {
 }
 
 function format_stash () {
-    awk '{ if (/^stash@{[0-9]+} WIP/) { sub(/stash@/, "", $1); print $1 } else { split($0, array, ": "); print array[2] } }'
+    awk '
+    {
+        if (/^stash@{[0-9]+} WIP/) {
+            sub(/stash@/, "", $1);
+            print $1
+        } else {
+            split($0, array, ": ");
+            print array[2]
+        }
+    }'
 }
 
 main
