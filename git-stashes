@@ -8,7 +8,7 @@ function main () {
         return
     fi
 
-    printf "\Uf1d3 ${(j/, /)stashes}"
+    printf "\Uf16c ${(j/, /)stashes}"
 }
 
 function read_and_format () {
@@ -23,7 +23,7 @@ function read_stashes () {
 }
 
 function format_stash () {
-    awk '{ if (/^stash@{[0-9]+} WIP/) { print $1 } else { split($0, array, ": "); print array[2] } }'
+    awk '{ if (/^stash@{[0-9]+} WIP/) { sub(/stash@/, "", $1); print $1 } else { split($0, array, ": "); print array[2] } }'
 }
 
 main
