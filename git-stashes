@@ -12,10 +12,7 @@ function main () {
 }
 
 function read_and_format () {
-    read_stashes | while read stash
-    do
-        format_stash "${stash}"
-    done
+    read_stashes | format_stash
 }
 
 function read_stashes () {
