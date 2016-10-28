@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 function main () {
-    local stashes=($(read_and_format))
+    local -a stashes
+    stashes+=($(read_and_format))
 
     if [ -z "${stashes}" ]
     then
